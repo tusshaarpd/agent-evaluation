@@ -2,7 +2,7 @@ import streamlit as st
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from app.database.engine import init_db
 
@@ -19,7 +19,7 @@ if "attack_logs" not in st.session_state:
 if not st.session_state.attack_logs:
     st.info("No active evaluation. Start an evaluation to see live monitoring.")
     if st.button("Start Evaluation"):
-        st.switch_page("app/pages/Run_Evaluation.py")
+        st.switch_page("pages/Run_Evaluation.py")
     st.stop()
 
 col1, col2, col3 = st.columns(3)

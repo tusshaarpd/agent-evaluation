@@ -4,7 +4,7 @@ import sys
 import time
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from app.core.enums import AttackType, Provider, VulnerabilityLevel
 from app.core.models import AgentConfig, AttackResult, EvaluationConfig, JudgeVerdict
@@ -183,7 +183,7 @@ if st.button("Start Evaluation", type="primary", use_container_width=True):
     col1, col2 = st.columns(2)
     with col1:
         if st.button("View Full Report"):
-            st.switch_page("app/pages/Reports.py")
+            st.switch_page("pages/Reports.py")
     with col2:
         if st.button("Run Another Evaluation"):
             st.rerun()

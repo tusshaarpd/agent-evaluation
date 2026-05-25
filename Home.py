@@ -80,7 +80,7 @@ with col1:
     Connect your AI agent via OpenAI-compatible API or use built-in dummy agents for testing.
     """)
     if st.button("Register Agent", key="home_register", use_container_width=True):
-        st.switch_page("app/pages/Register_Agent.py")
+        st.switch_page("pages/Register_Agent.py")
 
 with col2:
     st.markdown("""
@@ -88,7 +88,7 @@ with col2:
     Execute adversarial attacks including jailbreaks, prompt injection, and hallucination tests.
     """)
     if st.button("Run Evaluation", key="home_eval", use_container_width=True):
-        st.switch_page("app/pages/Run_Evaluation.py")
+        st.switch_page("pages/Run_Evaluation.py")
 
 with col3:
     st.markdown("""
@@ -96,7 +96,7 @@ with col3:
     Analyze security scores, vulnerability findings, and download enterprise reports.
     """)
     if st.button("View Reports", key="home_reports", use_container_width=True):
-        st.switch_page("app/pages/Reports.py")
+        st.switch_page("pages/Reports.py")
 
 st.markdown("---")
 
@@ -107,7 +107,7 @@ st.info(
 )
 
 if st.button("Run Demo Evaluation", type="primary", use_container_width=True):
-    st.switch_page("app/pages/Run_Evaluation.py")
+    st.switch_page("pages/Run_Evaluation.py")
 
 st.markdown("---")
 st.markdown("### Platform Capabilities")

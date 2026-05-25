@@ -2,7 +2,7 @@ import streamlit as st
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from app.configs.settings import get_settings, is_demo_mode
 from app.database.engine import init_db

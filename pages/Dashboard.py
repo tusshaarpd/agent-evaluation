@@ -5,7 +5,7 @@ import pandas as pd
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from app.database.engine import init_db
 from app.database.repository import EvaluationRepository, AgentRepository
@@ -25,7 +25,7 @@ agents = agent_repo.list_all()
 if not evaluations:
     st.info("No evaluations yet. Run your first evaluation to see the dashboard.")
     if st.button("Run Evaluation"):
-        st.switch_page("app/pages/Run_Evaluation.py")
+        st.switch_page("pages/Run_Evaluation.py")
     st.stop()
 
 col1, col2, col3, col4 = st.columns(4)

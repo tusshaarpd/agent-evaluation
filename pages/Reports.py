@@ -3,7 +3,7 @@ import plotly.graph_objects as go
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from app.core.models import EvaluationReport
 from app.database.engine import init_db
@@ -23,7 +23,7 @@ evaluations = eval_repo.list_all()
 if not evaluations:
     st.info("No evaluations available. Run an evaluation first.")
     if st.button("Run Evaluation"):
-        st.switch_page("app/pages/Run_Evaluation.py")
+        st.switch_page("pages/Run_Evaluation.py")
     st.stop()
 
 selected_eval = st.selectbox(

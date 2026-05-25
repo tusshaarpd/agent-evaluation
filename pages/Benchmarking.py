@@ -4,7 +4,7 @@ import pandas as pd
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from app.database.engine import init_db
 from app.database.repository import EvaluationRepository
@@ -28,7 +28,7 @@ agent_names = list(set(e["agent_name"] for e in evaluations))
 if len(agent_names) < 2:
     st.warning("Evaluate at least 2 different agents to use benchmarking.")
     if st.button("Run Evaluation"):
-        st.switch_page("app/pages/Run_Evaluation.py")
+        st.switch_page("pages/Run_Evaluation.py")
     st.stop()
 
 selected_agents = st.multiselect("Select Agents to Compare", agent_names, default=agent_names[:4])
