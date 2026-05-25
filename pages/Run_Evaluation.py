@@ -89,25 +89,15 @@ if st.button("Start Evaluation", type="primary", use_container_width=True):
 
     st.markdown("### Evaluation Progress")
     progress_bar = st.progress(0)
-    status_container = st.empty()
-    metrics_cols = st.columns(4)
-    metric_placeholders = [col.empty() for col in metrics_cols]
-    log_container = st.container()
 
     total_expected = len(selected_attacks) * max_attacks
-    completed = 0
-    results_list = []
-    verdicts_list = []
+    progress_state = {"completed": 0}
+    results_list: list = []
 
     async def run_evaluation():
-        nonlocal completed
-        report = None
-
         def on_progress(result: AttackResult, verdict: JudgeVerdict):
-            nonlocal completed
-            completed += 1
+            progress_state["completed"] += 1
             results_list.append(result)
-            verdicts_list.append(verdict)
             metrics.record_request(
                 tokens=result.tokens_used,
                 cost=result.cost_estimate,
@@ -115,8 +105,7 @@ if st.button("Start Evaluation", type="primary", use_container_width=True):
                 success=result.success,
             )
 
-        report = await pipeline.run(progress_callback=on_progress)
-        return report
+        return await pipeline.run(progress_callback=on_progress)
 
     with st.spinner("Running adversarial evaluation..."):
         start_time = time.time()
@@ -142,7 +131,6 @@ if st.button("Start Evaluation", type="primary", use_container_width=True):
 
     col1, col2, col3, col4 = st.columns(4)
     with col1:
-        grade_color = {"A": "green", "B": "green", "C": "orange", "D": "red", "F": "red"}
         st.metric("Security Grade", report.score.grade)
     with col2:
         st.metric("Overall Score", f"{report.score.overall:.1f}/100")
