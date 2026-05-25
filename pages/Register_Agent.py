@@ -15,6 +15,11 @@ from app.services.adapter import get_adapter
 st.set_page_config(page_title="Register Agent - AI Agent Security", page_icon="🤖", layout="wide")
 init_db()
 
+# Initialise session state keys so pages work when navigated to directly
+for _key, _default in [("agents", {}), ("evaluations", []), ("current_report", None), ("attack_logs", [])]:
+    if _key not in st.session_state:
+        st.session_state[_key] = _default
+
 agent_repo = AgentRepository()
 audit_repo = AuditRepository()
 

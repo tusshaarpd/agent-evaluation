@@ -11,6 +11,11 @@ from app.database.repository import AuditRepository
 st.set_page_config(page_title="Settings - AI Agent Security", page_icon="⚙️", layout="wide")
 init_db()
 
+# Initialise session state keys so pages work when navigated to directly
+for _key, _default in [("agents", {}), ("evaluations", []), ("current_report", None), ("attack_logs", [])]:
+    if _key not in st.session_state:
+        st.session_state[_key] = _default
+
 st.markdown("## Platform Settings")
 st.markdown("Configure API connections, preferences, and platform options.")
 st.markdown("---")
